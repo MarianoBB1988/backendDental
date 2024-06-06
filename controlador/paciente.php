@@ -12,6 +12,9 @@ switch ($funcion) {
     case "agregar":
         agregar();
         break;
+    case "modificar":
+        modificar();
+        break;
     case "eliminar":
         eliminar();
         break;
@@ -51,8 +54,8 @@ function subir_imagen($nombreImg)
 {
     $archivo = $_FILES['imgPerfil']['name'];
     $rutaTemproal = $_FILES['imgPerfil']['tmp_name'];
-    $extension = pathinfo($_FILES['imgPerfil']['name'],PATHINFO_EXTENSION);
-    move_uploaded_file($archivo['tmp_name'],"/img/".$nombreImg.$extension);
+    $extension = pathinfo($_FILES['imgPerfil']['name'], PATHINFO_EXTENSION);
+    move_uploaded_file($archivo['tmp_name'], "/img/" . $nombreImg . $extension);
 }
 
 function agregar()
@@ -66,15 +69,15 @@ function agregar()
     $genero = $_POST['genero'];
     $fecha = $_POST['fecha'];
     $observaciones = $_POST['observaciones'];
-    $extension = pathinfo($_FILES['imgPerfil']['name'],PATHINFO_EXTENSION);
-    move_uploaded_file($_FILES['imgPerfil']['tmp_name'], './img/'. $ci.'.'.$extension);
+    $extension = pathinfo($_FILES['imgPerfil']['name'], PATHINFO_EXTENSION);
+    move_uploaded_file($_FILES['imgPerfil']['tmp_name'], './img/' . $ci . '.' . $extension);
     $resultado = (new paciente())->agregarPacienteDAO($nombre, $apellido, $ci, $telefono, $email, $direccion, $genero, $fecha, $observaciones);
     echo json_encode($resultado);
-   
 }
 
-function modificar(){
-    $id=$_GET['id'];
+function modificar()
+{
+    $id = $_GET['id'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $ci = $_POST['ci'];
@@ -84,17 +87,17 @@ function modificar(){
     $genero = $_POST['genero'];
     $fecha = $_POST['fecha'];
     $observaciones = $_POST['observaciones'];
-    if (subir_imagen($ci)) {
-        $resultado = (new paciente())->modificarPacienteDAO($id, $nombre, $apellido, $ci, $telefono, $email, $direccion, $genero, $fecha, $observaciones);
-    }
+    $extension = pathinfo($_FILES['imgPerfil']['name'], PATHINFO_EXTENSION);
+    move_uploaded_file($_FILES['imgPerfil']['tmp_name'], './img/' . $ci . '.' . $extension);
+    $resultado = (new paciente())->modificarPacienteDAO($id, $nombre, $apellido, $ci, $telefono, $email, $direccion, $genero, $fecha, $observaciones);
     echo json_encode($resultado);
- }
+}
 
 
 
 function eliminar()
 {
     $id = $_GET['id'];
-    $resultado = (new procedimiento())->eliminarProcedimientoDAO($id);
+    $resultado = (new paciente())->eliminarPacienteDAO($id);
     echo json_encode($resultado);
 }

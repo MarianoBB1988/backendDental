@@ -55,4 +55,15 @@ class paciente
          return $respuesta;
          
      }
+
+     public function eliminarPacienteDAO($id){
+        $sql = "DELETE FROM paciente WHERE id = '$id'";
+        $connection = connection();
+        $respuesta = $connection->query($sql);
+        if ($respuesta){
+            return new Respuesta(true, "Paciente eliminado", $respuesta);
+        }else{
+            return new Respuesta(false, "Error al eliminar el paciente", $respuesta);
+        }
+    }
 }
