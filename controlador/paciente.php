@@ -69,9 +69,9 @@ function agregar()
     $genero = $_POST['genero'];
     $fecha = $_POST['fecha'];
     $observaciones = $_POST['observaciones'];
-    $extension = pathinfo($_FILES['imgPerfil']['name'], PATHINFO_EXTENSION);
+    $extension = pathinfo($_FILES['imgPerfil']['name'],PATHINFO_EXTENSION);
     move_uploaded_file($_FILES['imgPerfil']['tmp_name'], './img/' . $ci . '.' . $extension);
-    $resultado = (new paciente())->agregarPacienteDAO($nombre, $apellido, $ci, $telefono, $email, $direccion, $genero, $fecha, $observaciones);
+    $resultado = (new paciente())->agregarPacienteDAO($nombre, $apellido, $ci, $telefono, $email, $direccion, $genero, $fecha, $observaciones, $extension);
     echo json_encode($resultado);
 }
 
@@ -89,7 +89,7 @@ function modificar()
     $observaciones = $_POST['observaciones'];
     $extension = pathinfo($_FILES['imgPerfil']['name'], PATHINFO_EXTENSION);
     move_uploaded_file($_FILES['imgPerfil']['tmp_name'], './img/' . $ci . '.' . $extension);
-    $resultado = (new paciente())->modificarPacienteDAO($id, $nombre, $apellido, $ci, $telefono, $email, $direccion, $genero, $fecha, $observaciones);
+    $resultado = (new paciente())->modificarPacienteDAO($id, $nombre, $apellido, $ci, $telefono, $email, $direccion, $genero, $fecha, $observaciones,  $extension);
     echo json_encode($resultado);
 }
 
