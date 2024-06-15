@@ -40,6 +40,7 @@ class paciente
         $sql = "INSERT INTO paciente VALUES (null, '$nombre', '$apellido', '$ci', '$telefono', '$email', '$fecha', '$genero', '$direccion', '$observaciones', '$extension')";
         $connection = connection();
         $respuesta = $connection->query($sql);
+
         if ($respuesta) {
             return new Respuesta(true, "Paciente agregado", $respuesta);
         } else {
@@ -50,6 +51,14 @@ class paciente
       
     public function modificarPacienteDAO($id,$nombre, $apellido, $ci, $telefono, $email, $direccion, $genero, $fecha, $observaciones, $extension){
         $sql="UPDATE paciente SET nombre='$nombre',apellido='$apellido', ci='$ci', telefono='$telefono', email='$email', direccion='$direccion', genero='$genero', fecha='$fecha', observaciones='$observaciones', extension='$extension' WHERE id=$id";
+         $connection = connection();
+         $respuesta = $connection->query($sql);
+         return $respuesta;
+         
+     }
+
+     public function modificarExtensionDAO($ci, $extension){
+        $sql="UPDATE paciente SET extension='$extension' WHERE ci=$ci";
          $connection = connection();
          $respuesta = $connection->query($sql);
          return $respuesta;

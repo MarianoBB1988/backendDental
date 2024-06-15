@@ -9,7 +9,7 @@ class procedimiento {
     function obtenerProcedimientoDAO($ci){
         $connection = connection();
       try{
-        $sql = "SELECT paciente.nombre as nomPaciente, paciente.id as idPaciente, paciente.fecha as fechaNacimiento, paciente.apellido, procedimiento.id, procedimiento.pieza, procedimiento.sector, procedimiento.nombre, procedimiento.fecha, procedimiento.descripcion, procedimiento.patologia, procedimiento.medicacion, procedimiento.estado FROM procedimiento INNER JOIN paciente on procedimiento.id_paciente = paciente.id where paciente.ci=$ci ORDER BY procedimiento.fecha";
+        $sql = "SELECT paciente.nombre as nomPaciente, paciente.id as idPaciente, paciente.fecha as fechaNacimiento, paciente.apellido, procedimiento.id, procedimiento.pieza, procedimiento.sector, procedimiento.nombre, procedimiento.fecha, procedimiento.descripcion, procedimiento.patologia, procedimiento.medicacion, procedimiento.estado FROM procedimiento INNER JOIN paciente on procedimiento.id_paciente = paciente.id where paciente.ci=$ci ORDER BY procedimiento.fecha ASC";
         $respuesta = $connection->query($sql);
         $procedimientos = $respuesta->fetch_all(MYSQLI_ASSOC);
         return  $procedimientos;
@@ -18,6 +18,15 @@ class procedimiento {
       
       }
        
+    }
+
+    public function obtenerProcedimientosOrdenados($columna, $orden, $idPaciente)
+    {
+        $connection = connection();
+        $sql = "SELECT * FROM procedimiento WHERE id_paciente=$idPaciente ORDER BY $columna $orden";
+        $respuesta = $connection->query($sql);
+        $resultado = $respuesta->fetch_all(MYSQLI_ASSOC);
+        return $resultado;
     }
 
     public function obtenerPaciente($ci){
