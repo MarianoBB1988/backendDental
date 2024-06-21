@@ -69,6 +69,7 @@ class paciente
         $sql = "DELETE FROM paciente WHERE id = '$id'";
         $connection = connection();
         $respuesta = $connection->query($sql);
+        
         if ($respuesta){
             return new Respuesta(true, "Paciente eliminado", $respuesta);
         }else{

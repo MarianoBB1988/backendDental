@@ -8,15 +8,23 @@ class procedimiento {
 
     function obtenerProcedimientoDAO($ci){
         $connection = connection();
-      try{
-        $sql = "SELECT paciente.nombre as nomPaciente, paciente.id as idPaciente, paciente.fecha as fechaNacimiento, paciente.apellido, procedimiento.id, procedimiento.pieza, procedimiento.sector, procedimiento.nombre, procedimiento.fecha, procedimiento.descripcion, procedimiento.patologia, procedimiento.medicacion, procedimiento.estado FROM procedimiento INNER JOIN paciente on procedimiento.id_paciente = paciente.id where paciente.ci=$ci ORDER BY procedimiento.fecha ASC";
+     
+        $sql = "SELECT paciente.nombre as nomPaciente, paciente.id as idPaciente, paciente.fecha as fechaNacimiento, paciente.apellido as apellido, procedimiento.id, procedimiento.pieza, procedimiento.sector, procedimiento.nombre, procedimiento.fecha, procedimiento.descripcion, procedimiento.patologia, procedimiento.medicacion, procedimiento.estado FROM procedimiento RIGHT JOIN paciente on procedimiento.id_paciente = paciente.id where paciente.ci=$ci ORDER BY procedimiento.fecha ASC";
         $respuesta = $connection->query($sql);
         $procedimientos = $respuesta->fetch_all(MYSQLI_ASSOC);
+
+        foreach ($procedimientos as &$fila) {
+            foreach ($fila as $clave => &$valor) {
+                if ($valor === null) {
+                    $valor = ""; // Suplanta null por una cadena vacía
+                }
+            }
+        }
+        
+        
         return  $procedimientos;
-      }catch (Exception $e){
-        return new Respuesta(false, "No se pudo realizar la consulta -",  $e->getMessage());
-      
-      }
+
+     
        
     }
 
