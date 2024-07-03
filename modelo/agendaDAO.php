@@ -37,6 +37,24 @@ class agenda
         }
     }
 
+    function modificarDAO($id,$idPaciente, $hora, $fecha, $motivo)
+    {
+        try{
+            $connection = connection();
+            $sql = "UPDATE agenda SET id_paciente=$idPaciente, hora= '$hora', fecha='$fecha', motivo='$motivo' WHERE id=$id";
+            $respuesta = $connection->query($sql);
+
+            if ($respuesta){
+                return new Respuesta(true, "agenda modificada", $respuesta);
+            }else{
+                return new Respuesta(false, "Error al modificar agenda", $respuesta);
+            }
+        }catch(Exception $e){   
+            return $e->getMessage();
+        }
+       
+    }
+
     function cambiarEstado($id,$estado)
     {
         try{

@@ -80,24 +80,11 @@ function agregar()
 function modificar()
 {
     $id = $_GET['id'];
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $ci = $_POST['ci'];
-    $telefono = $_POST['telefono'];
-    $email = $_POST['email'];
-    $direccion = $_POST['direccion'];
-    $genero = $_POST['genero'];
+    $idPaciente = $_POST['idPaciente'];
+    $hora = $_POST['hora'];
     $fecha = $_POST['fecha'];
-    $observaciones = $_POST['observaciones'];
-    $extension = $_POST['extension'];
-    if ($extension) {
-        $resultado = (new paciente())->modificarPacienteDAO($id, $nombre, $apellido, $ci, $telefono, $email, $direccion, $genero, $fecha, $observaciones,  $extension);
-    } else {
-        $extension = pathinfo($_FILES['imgPerfil']['name'], PATHINFO_EXTENSION);
-        move_uploaded_file($_FILES['imgPerfil']['tmp_name'], './img/' . $ci . '.' . $extension);
-        $resultado = (new paciente())->modificarPacienteDAO($id, $nombre, $apellido, $ci, $telefono, $email, $direccion, $genero, $fecha, $observaciones,  $extension);
-    }
-
+    $motivo = $_POST['motivo'];
+    $resultado = (new agenda())->modificarDAO($id,$idPaciente, $hora, $fecha, $motivo);
     echo json_encode($resultado);
 }
 

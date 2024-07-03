@@ -9,7 +9,7 @@ class procedimiento {
     function obtenerProcedimientoDAO($ci){
         $connection = connection();
      
-        $sql = "SELECT paciente.nombre as nomPaciente, paciente.id as idPaciente, paciente.fecha as fechaNacimiento, paciente.apellido as apellido, procedimiento.id, procedimiento.pieza, procedimiento.sector, procedimiento.nombre, procedimiento.fecha, procedimiento.descripcion, procedimiento.patologia, procedimiento.medicacion, procedimiento.estado FROM procedimiento RIGHT JOIN paciente on procedimiento.id_paciente = paciente.id where paciente.ci=$ci ORDER BY procedimiento.fecha ASC";
+        $sql = "SELECT paciente.nombre as nomPaciente, procedimiento.adjunto as extension, paciente.id as idPaciente, paciente.fecha as fechaNacimiento, paciente.apellido as apellido, paciente.ci as ci, procedimiento.id, procedimiento.pieza, procedimiento.sector, procedimiento.nombre, procedimiento.fecha, procedimiento.descripcion, procedimiento.patologia, procedimiento.medicacion, procedimiento.estado FROM procedimiento RIGHT JOIN paciente on procedimiento.id_paciente = paciente.id where paciente.ci=$ci ORDER BY procedimiento.fecha ASC";
         $respuesta = $connection->query($sql);
         $procedimientos = $respuesta->fetch_all(MYSQLI_ASSOC);
 
@@ -47,10 +47,23 @@ class procedimiento {
          }
     }
 
-    public function agregarProcedimientoDAO($nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha,  $estado, $medicacion, $patologia){
-        $sql = "INSERT INTO procedimiento(pieza, sector, nombre, id_paciente, fecha, descripcion, estado, medicacion, patologia) VALUES ('$pieza', '$sector', '$nombre', '$idPaciente', '$fecha', '$descripcion', '$estado', '$medicacion', '$patologia')";
+    public function agregarProcedimientoDAO($nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha,  $estado, $medicacion, $patologia, $adjunto){
+      
         $connection = connection();
+        $nomImg = $adjunto['name'];
+        $extension = pathinfo($nomImg, PATHINFO_EXTENSION);
+        $sql = "INSERT INTO procedimiento(pieza, sector, nombre, id_paciente, fecha, descripcion, estado, medicacion, patologia, adjunto) VALUES ('$pieza', '$sector', '$nombre', '$idPaciente', '$fecha', '$descripcion', '$estado', '$medicacion', '$patologia', '$extension')";
+
         $respuesta = $connection->query($sql);
+        $id = $connection->insert_id;
+        $rutaTemp = $adjunto['tmp_name'];
+        if ($extension=='dcm'){
+            move_uploaded_file($rutaTemp, "./pacs/$id.$extension");
+        }else{
+            move_uploaded_file($rutaTemp, "./adjuntos/$id.$extension");
+        }
+       
+
         if ($respuesta){
             return new Respuesta(true, "Procedimiento agregado", $respuesta);
         }else{

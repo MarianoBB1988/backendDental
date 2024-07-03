@@ -1,102 +1,23 @@
-[18-Jun-2024 14:25:55 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_all() on bool in C:\xampp\htdocs\backendDental\modelo\agendaDAO.php:24
-Stack trace:
-#0 C:\xampp\htdocs\backendDental\controlador\agenda.php(113): agenda->cambiarEstado('1')
-#1 C:\xampp\htdocs\backendDental\controlador\agenda.php(37): cambiarEstado()
-#2 {main}
-  thrown in C:\xampp\htdocs\backendDental\modelo\agendaDAO.php on line 24
-[18-Jun-2024 14:35:35 Europe/Berlin] PHP Warning:  Undefined array key "es" in C:\xampp\htdocs\backendDental\controlador\agenda.php on line 112
-[18-Jun-2024 14:35:46 Europe/Berlin] PHP Warning:  Undefined array key "es" in C:\xampp\htdocs\backendDental\controlador\agenda.php on line 112
-[18-Jun-2024 14:36:09 Europe/Berlin] PHP Warning:  Undefined array key "es" in C:\xampp\htdocs\backendDental\controlador\agenda.php on line 112
-[19-Jun-2024 15:53:30 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:53:44 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:54:13 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:54:15 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:54:46 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:54:56 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:56:20 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:56:27 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:56:37 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:57:04 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:58:49 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:58:53 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:58:58 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:59:13 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:59:18 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:59:22 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:59:39 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 15:59:49 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:00:15 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:00:20 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:00:21 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:00:24 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:01:06 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:01:14 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:01:22 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:02:13 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:02:47 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:07:04 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:07:13 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:07:24 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:07:26 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:07:27 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:07:32 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:07:34 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:07:35 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:07:44 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:08:03 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:08:04 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:08:26 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:09:42 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:09:51 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:11:33 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:11:34 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:11:40 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:11:52 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:12:04 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:12:42 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:12:49 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:13:03 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:13:32 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 16:15:20 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
-[19-Jun-2024 17:02:17 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '* IS NOT NULL ORDER BY procedimiento.fecha ASC' at line 1 in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php:13
-Stack trace:
-#0 C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php(13): mysqli->query('SELECT paciente...')
-#1 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(47): procedimiento->obtenerProcedimientoDAO('4567890')
-#2 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(26): obtener()
-#3 {main}
-  thrown in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 13
-[20-Jun-2024 14:11:41 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php:13
-Stack trace:
-#0 C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php(13): mysqli->query('SELECT * FROM p...')
-#1 C:\xampp\htdocs\backendDental\controlador\paciente.php(47): paciente->obtenerPaciente('')
-#2 C:\xampp\htdocs\backendDental\controlador\paciente.php(27): obtener()
-#3 {main}
-  thrown in C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php on line 13
-[21-Jun-2024 15:03:23 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php:13
-Stack trace:
-#0 C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php(13): mysqli->query('SELECT * FROM p...')
-#1 C:\xampp\htdocs\backendDental\controlador\paciente.php(47): paciente->obtenerPaciente('')
-#2 C:\xampp\htdocs\backendDental\controlador\paciente.php(27): obtener()
-#3 {main}
-  thrown in C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php on line 13
-[21-Jun-2024 15:03:43 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php:13
-Stack trace:
-#0 C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php(13): mysqli->query('SELECT * FROM p...')
-#1 C:\xampp\htdocs\backendDental\controlador\paciente.php(47): paciente->obtenerPaciente('')
-#2 C:\xampp\htdocs\backendDental\controlador\paciente.php(27): obtener()
-#3 {main}
-  thrown in C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php on line 13
-[21-Jun-2024 15:03:54 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php:13
-Stack trace:
-#0 C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php(13): mysqli->query('SELECT * FROM p...')
-#1 C:\xampp\htdocs\backendDental\controlador\paciente.php(47): paciente->obtenerPaciente('')
-#2 C:\xampp\htdocs\backendDental\controlador\paciente.php(27): obtener()
-#3 {main}
-  thrown in C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php on line 13
-[21-Jun-2024 15:04:02 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 in C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php:13
-Stack trace:
-#0 C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php(13): mysqli->query('SELECT * FROM p...')
-#1 C:\xampp\htdocs\backendDental\controlador\paciente.php(47): paciente->obtenerPaciente('')
-#2 C:\xampp\htdocs\backendDental\controlador\paciente.php(27): obtener()
-#3 {main}
-  thrown in C:\xampp\htdocs\backendDental\modelo\pacienteDAO.php on line 13
+[26-Jun-2024 19:46:42 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[26-Jun-2024 20:41:05 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[26-Jun-2024 20:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 53
+[26-Jun-2024 20:41:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 59
+[26-Jun-2024 22:58:59 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[26-Jun-2024 22:58:59 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[26-Jun-2024 22:59:00 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[26-Jun-2024 22:59:00 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[28-Jun-2024 23:01:16 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[02-Jul-2024 14:54:46 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[02-Jul-2024 15:12:30 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[02-Jul-2024 15:12:30 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 53
+[02-Jul-2024 15:12:30 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 59
+[02-Jul-2024 15:12:40 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[02-Jul-2024 15:12:40 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 53
+[02-Jul-2024 15:12:40 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 59
+[02-Jul-2024 15:54:53 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[02-Jul-2024 15:54:53 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 53
+[02-Jul-2024 15:54:53 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 59
+[02-Jul-2024 20:25:39 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[03-Jul-2024 02:06:59 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[03-Jul-2024 02:06:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 53
+[03-Jul-2024 02:07:00 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 59

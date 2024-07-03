@@ -59,7 +59,10 @@ function agregar()
   $estado = $_POST['estado'];
   $medicacion = $_POST['medicacion'];
   $patologia = $_POST['patologia'];
-  $resultado = (new procedimiento())->agregarProcedimientoDAO($nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha, $estado, $medicacion, $patologia);
+  //$adjunto = $_POST['adjunto'];
+  $adjunto = $_FILES['adjunto'];
+  $resultado = (new procedimiento())->agregarProcedimientoDAO($nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha, $estado, $medicacion, $patologia, $adjunto);
+  
   echo json_encode($resultado);
 }
 
