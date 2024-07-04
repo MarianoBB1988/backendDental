@@ -48,6 +48,15 @@ class paciente
         }
     }
 
+    function obtenerIdDAO($ci)
+    {
+        $connection = connection();
+        $sql = "SELECT id from paciente WHERE ci=$ci";
+        $respuesta = $connection->query($sql);
+        $id = $respuesta->fetch_all(MYSQLI_ASSOC);
+
+        return  $id;
+    }
       
     public function modificarPacienteDAO($id,$nombre, $apellido, $ci, $telefono, $email, $direccion, $genero, $fecha, $observaciones, $extension){
         $sql="UPDATE paciente SET nombre='$nombre',apellido='$apellido', ci='$ci', telefono='$telefono', email='$email', direccion='$direccion', genero='$genero', fecha='$fecha', observaciones='$observaciones', extension='$extension' WHERE id=$id";

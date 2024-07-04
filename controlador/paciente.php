@@ -32,6 +32,9 @@ if (isset($_SESSION['sesion'])) {
         case "obtenerOrdenados":
             obtenerOrdenados();
             break;
+        case "obtenerId":
+            obtenerId();
+            break;
         case "subirImagen":
             subir_imagen();
             break;
@@ -60,6 +63,14 @@ function obtenerOrdenados()
     $columna = $_GET['columna'];
     $orden = $_GET['orden'];
     $resultado = (new paciente())->obtenerPacientesORdenados($columna, $orden);
+    echo json_encode($resultado);
+}
+
+function obtenerId()
+{
+    $ci = $_GET['ci'];
+
+    $resultado = (new paciente())->obtenerIdDAO($ci);
     echo json_encode($resultado);
 }
 

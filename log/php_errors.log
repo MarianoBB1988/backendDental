@@ -21,3 +21,129 @@
 [03-Jul-2024 02:06:59 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
 [03-Jul-2024 02:06:59 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 53
 [03-Jul-2024 02:07:00 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 59
+[03-Jul-2024 16:57:16 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[03-Jul-2024 16:57:16 Europe/Berlin] PHP Warning:  Undefined array key "estadoCuenta" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 64
+[03-Jul-2024 16:57:17 Europe/Berlin] PHP Warning:  Undefined array key "monto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 65
+[03-Jul-2024 16:57:17 Europe/Berlin] PHP Warning:  Undefined array key "unidad" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 66
+[03-Jul-2024 16:57:17 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 58
+[03-Jul-2024 16:57:17 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 64
+[03-Jul-2024 16:57:17 Europe/Berlin] PHP Fatal error:  Uncaught Error: Object of class Respuesta could not be converted to string in C:\xampp\htdocs\backendDental\controlador\procedimiento.php:69
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(17): agregar()
+#1 {main}
+  thrown in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 69
+[03-Jul-2024 17:04:12 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[03-Jul-2024 17:04:12 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 58
+[03-Jul-2024 17:04:12 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 64
+[03-Jul-2024 17:04:12 Europe/Berlin] PHP Fatal error:  Uncaught Error: Object of class Respuesta could not be converted to string in C:\xampp\htdocs\backendDental\controlador\procedimiento.php:69
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(17): agregar()
+#1 {main}
+  thrown in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 69
+[03-Jul-2024 17:12:01 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[03-Jul-2024 17:12:01 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 58
+[03-Jul-2024 17:12:01 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 64
+[03-Jul-2024 18:30:07 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[03-Jul-2024 18:30:07 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[03-Jul-2024 18:30:19 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php:13
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\controlador\usuario.php(41): usuario->login('mbastarreix', '123')
+#1 C:\xampp\htdocs\backendDental\controlador\usuario.php(29): login()
+#2 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php on line 13
+[03-Jul-2024 18:30:22 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php:13
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\controlador\usuario.php(41): usuario->login('mbastarreix', '123')
+#1 C:\xampp\htdocs\backendDental\controlador\usuario.php(29): login()
+#2 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php on line 13
+[03-Jul-2024 18:44:41 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'cuneta.id_procedimiento' in 'on clause' in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php:19
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php(19): mysqli->query('SELECT paciente...')
+#1 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(47): procedimiento->obtenerProcedimientoDAO('46101026')
+#2 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(26): obtener()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 19
+[03-Jul-2024 18:44:41 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'cuneta.id_procedimiento' in 'on clause' in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php:19
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php(19): mysqli->query('SELECT paciente...')
+#1 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(47): procedimiento->obtenerProcedimientoDAO('46101026')
+#2 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(26): obtener()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 19
+[03-Jul-2024 18:45:18 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'cuneta.id_procedimiento' in 'on clause' in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php:19
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php(19): mysqli->query('SELECT paciente...')
+#1 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(47): procedimiento->obtenerProcedimientoDAO('46101026')
+#2 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(26): obtener()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 19
+[03-Jul-2024 18:45:18 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'cuneta.id_procedimiento' in 'on clause' in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php:19
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php(19): mysqli->query('SELECT paciente...')
+#1 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(47): procedimiento->obtenerProcedimientoDAO('46101026')
+#2 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(26): obtener()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 19
+[03-Jul-2024 18:52:43 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'cuneta.id_procedimiento' in 'on clause' in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php:19
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php(19): mysqli->query('SELECT paciente...')
+#1 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(47): procedimiento->obtenerProcedimientoDAO('46101026')
+#2 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(26): obtener()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 19
+[03-Jul-2024 18:52:43 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'cuneta.id_procedimiento' in 'on clause' in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php:19
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php(19): mysqli->query('SELECT paciente...')
+#1 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(47): procedimiento->obtenerProcedimientoDAO('46101026')
+#2 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(26): obtener()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 19
+[03-Jul-2024 18:56:06 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'costo' in 'order clause' in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php:38
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php(38): mysqli->query('SELECT * FROM p...')
+#1 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(40): procedimiento->obtenerProcedimientosOrdenados('costo', 'DESC', '92')
+#2 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(30): obtenerOrdenados()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 38
+[03-Jul-2024 18:56:06 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'costo' in 'order clause' in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php:38
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php(38): mysqli->query('SELECT * FROM p...')
+#1 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(40): procedimiento->obtenerProcedimientosOrdenados('costo', 'ASC', '92')
+#2 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(30): obtenerOrdenados()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 38
+[03-Jul-2024 19:55:55 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[03-Jul-2024 19:55:55 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 58
+[03-Jul-2024 19:55:55 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 64
+[03-Jul-2024 19:58:23 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[03-Jul-2024 19:58:23 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 58
+[03-Jul-2024 19:58:23 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 64
+[03-Jul-2024 20:00:58 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[03-Jul-2024 20:00:58 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 58
+[03-Jul-2024 20:00:58 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 64
+[03-Jul-2024 20:41:42 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[03-Jul-2024 20:41:42 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 58
+[03-Jul-2024 20:41:42 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 64
+[03-Jul-2024 20:42:26 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[03-Jul-2024 20:42:26 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 58
+[03-Jul-2024 20:42:26 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 64
+[03-Jul-2024 20:43:23 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[03-Jul-2024 20:43:23 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 58
+[03-Jul-2024 20:43:23 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 64
+[04-Jul-2024 15:58:36 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[04-Jul-2024 15:58:36 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[04-Jul-2024 16:00:32 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[04-Jul-2024 16:00:32 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 57
+[04-Jul-2024 16:00:32 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 63
+[04-Jul-2024 16:04:52 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[04-Jul-2024 16:04:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 57
+[04-Jul-2024 16:04:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 63
+[04-Jul-2024 16:11:05 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[04-Jul-2024 16:11:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 59
+[04-Jul-2024 16:11:05 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 65
+[04-Jul-2024 16:12:32 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
+[04-Jul-2024 16:12:32 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 59
+[04-Jul-2024 16:12:32 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 65
+[04-Jul-2024 20:11:17 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14
+[04-Jul-2024 20:11:17 Europe/Berlin] PHP Warning:  Undefined array key "sesion" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 14

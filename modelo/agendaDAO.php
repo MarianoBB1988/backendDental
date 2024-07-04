@@ -8,7 +8,7 @@ class agenda
     function obtenerAgenda($fecha)
     {
         $connection = connection();
-        $sql = "SELECT agenda.*, paciente.nombre, paciente.apellido, paciente.ci FROM agenda INNER JOIN paciente on paciente.id=agenda.id_paciente WHERE agenda.fecha='$fecha' ORDER BY hora ASC";
+        $sql = "SELECT agenda.*, paciente.nombre, paciente.apellido, paciente.ci, paciente.telefono FROM agenda INNER JOIN paciente on paciente.id=agenda.id_paciente WHERE agenda.fecha='$fecha' ORDER BY hora ASC";
         $respuesta = $connection->query($sql);
         $resultado = $respuesta->fetch_all(MYSQLI_ASSOC);
         return $resultado;

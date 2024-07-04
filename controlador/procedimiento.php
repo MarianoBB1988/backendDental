@@ -61,9 +61,17 @@ function agregar()
   $patologia = $_POST['patologia'];
   //$adjunto = $_POST['adjunto'];
   $adjunto = $_FILES['adjunto'];
+  $estadoCuenta = $_POST['estadoCuenta'];
+  $costo = $_POST['monto'];
+  $unidad = $_POST['unidad'];
   $resultado = (new procedimiento())->agregarProcedimientoDAO($nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha, $estado, $medicacion, $patologia, $adjunto);
-  
-  echo json_encode($resultado);
+  if ($resultado == true){
+    $resultado2 = (new procedimiento())->agregarCuentaDAO($unidad, $costo, $estadoCuenta, $fecha);
+  }else{
+    $resultado2 =  new Respuesta(false, "Error al agregar el procedimiento, no se llegó a agregar la deuda en la cuenta", $resultado);
+  }
+
+  echo json_encode($resultado2);
 }
 
 function modificar()
