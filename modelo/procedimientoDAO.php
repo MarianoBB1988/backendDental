@@ -54,7 +54,7 @@ class procedimiento
 
     public function agregarProcedimientoDAO($nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha,  $estado, $medicacion, $patologia, $adjunto)
     {
-        global $idProc;
+        global $idProc;//Ya no es necesario usarla global
         $connection = connection();
         $nomImg = $adjunto['name'];
         $extension = pathinfo($nomImg, PATHINFO_EXTENSION);
@@ -71,33 +71,43 @@ class procedimiento
 
 
         if ($respuesta) {
+            return $idProc;
+        } else {
+            return 0;
+        }
+    }
+
+   
+
+
+
+    public function modificarProcedimientoDAO($id, $nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha,  $estado, $medicacion, $patologia,$adjunto)
+    {
+      
+       
+        $nomImg = $adjunto['name'];
+        $extension = pathinfo($nomImg, PATHINFO_EXTENSION);
+        if($adjunto){
+            $sql = "UPDATE procedimiento SET patologia='$patologia',nombre='$nombre', adjunto='$extension', pieza='$pieza', sector='$sector', estado='$estado', medicacion='$medicacion', descripcion='$descripcion', fecha='$fecha' WHERE id=$id";
+        }else{
+            $sql = "UPDATE procedimiento SET patologia='$patologia',nombre='$nombre', pieza='$pieza', sector='$sector', estado='$estado', medicacion='$medicacion', descripcion='$descripcion', fecha='$fecha' WHERE id=$id";
+        }
+
+        $connection = connection();
+        $respuesta = $connection->query($sql);
+      //  $idProc = $connection->insert_id;
+        $rutaTemp = $adjunto['tmp_name'];
+        if ($extension == 'dcm') {
+            move_uploaded_file($rutaTemp, "./pacs/$id.$extension");
+        } else {
+            move_uploaded_file($rutaTemp, "./adjuntos/$id.$extension");
+        }
+
+        if ($respuesta) {
             return true;
         } else {
             return false;
         }
-    }
-
-    public function agregarCuentaDAO($unidad, $costo, $estado, $fecha)
-    {
-        global $idProc;
-        $connection = connection();
-        $sql = "INSERT INTO cuenta VALUES (0, $idProc, '$estado', '$unidad', '$costo', '$fecha')";
-        $respuesta = $connection->query($sql);
-        if ($respuesta) {
-            return new Respuesta(true, "Cuenta agregado", $respuesta);
-        } else {
-            return new Respuesta(false, "Error al agregar la cuenta", $respuesta);
-        }
-    }
-
-
-
-    public function modificarProcedimientoDAO($id, $nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha,  $estado, $medicacion, $patologia)
-    {
-        $sql = "UPDATE procedimiento SET patologia='$patologia',nombre='$nombre', estado='$estado', medicacion='$medicacion', descripcion='$descripcion', fecha='$fecha' WHERE id=$id";
-        $connection = connection();
-        $respuesta = $connection->query($sql);
-        return $respuesta;
     }
 
     public function eliminarProcedimientoDAO($id)

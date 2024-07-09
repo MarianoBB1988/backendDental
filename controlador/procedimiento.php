@@ -7,11 +7,11 @@ header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 // Permitir los encabezados HTTP especificados
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
-
+require_once '../modelo/cuentaDAO.php';
 require_once '../modelo/procedimientoDAO.php';
 session_start();
 $funcion = $_GET['funcion'];
-if ($_SESSION['sesion']) {
+//if ($_SESSION['sesion']) {
   switch ($funcion) {
     case "agregar":
       agregar();
@@ -30,7 +30,7 @@ if ($_SESSION['sesion']) {
       obtenerOrdenados();
       break;
   }
-}
+//}
 
 function obtenerOrdenados()
 {
@@ -64,19 +64,20 @@ function agregar()
   $estadoCuenta = $_POST['estadoCuenta'];
   $costo = $_POST['monto'];
   $unidad = $_POST['unidad'];
-  $resultado = (new procedimiento())->agregarProcedimientoDAO($nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha, $estado, $medicacion, $patologia, $adjunto);
-  if ($resultado == true){
-    $resultado2 = (new procedimiento())->agregarCuentaDAO($unidad, $costo, $estadoCuenta, $fecha);
+  $idProcedimiento = (new procedimiento())->agregarProcedimientoDAO($nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha, $estado, $medicacion, $patologia, $adjunto);
+  if ($idProcedimiento == 0){
+    $resultado =  new Respuesta(false, "Error al agregar el procedimiento, no se llegó a agregar la deuda en la cuenta", $idProcedimiento);
   }else{
-    $resultado2 =  new Respuesta(false, "Error al agregar el procedimiento, no se llegó a agregar la deuda en la cuenta", $resultado);
+    $resultado = (new cuenta())->agregarCuentaDAO($idProcedimiento,$unidad, $costo, $estadoCuenta, $fecha);
+   
   }
 
-  echo json_encode($resultado2);
+  echo json_encode($resultado);
 }
 
 function modificar()
 {
-  $id = $_GET['id'];
+ $id = $_GET['id'];
   $nombre = $_POST['nombre'];
   $descripcion = $_POST['descripcion'];
   $pieza = $_POST['pieza'];
@@ -86,9 +87,28 @@ function modificar()
   $estado = $_POST['estado'];
   $medicacion = $_POST['medicacion'];
   $patologia = $_POST['patologia'];
-  $resultado = (new procedimiento())->modificarProcedimientoDAO($id, $nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha, $estado, $medicacion, $patologia);
+  $adjunto = $_FILES['adjunto'];
+  $estadoCuenta = $_POST['estadoCuenta'];
+  $costo = $_POST['monto'];
+  $unidad = $_POST['unidad'];
+  $respuesta = (new procedimiento())->modificarProcedimientoDAO($id, $nombre, $descripcion, $pieza, $sector, $idPaciente, $fecha, $estado, $medicacion, $patologia, $adjunto);
+  if ($respuesta){
+  
+    $resultado = (new cuenta())->modificarCuentaDAO($id,$unidad, $costo, $estadoCuenta, $fecha);
+  }else{
+    $resultado =  new Respuesta(false, "Error al agregar el procedimiento, no se llegó a agregar la deuda en la cuenta", $respuesta);
+  
+  }
   echo json_encode($resultado);
-}
+/*   $id = $_GET['id'];
+  $estadoCuenta = $_POST['estadoCuenta'];
+  $costo = $_POST['monto'];
+  $unidad = $_POST['unidad'];
+  $fecha = $_POST['fecha']; */
+
+ /*  $resultado = (new cuenta())->modificarCuentaDAO($id, $unidad, $costo, $estadoCuenta, $fecha);
+   echo $resultado; */
+} 
 
 function eliminar()
 {
