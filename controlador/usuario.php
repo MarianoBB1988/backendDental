@@ -33,6 +33,28 @@ switch ($funcion) {
         break;
 }
 
+function obtener()
+{
+
+    $resultado = (new usuario())->obtenerUsuarios();
+    echo json_encode($resultado);
+}
+
+function agregar()
+{
+    // Obtener datos del formulario
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $nombre_usuario = $_POST['nombre_usuario'];
+    $tipo = $_POST['tipo'];
+
+    // Crear una instancia de la clase Usuario y llamar al método agregarUsuario
+    $usuario = new Usuario();
+    $resultado = $usuario->agregarUsuario($nombre, $apellido, $nombre_usuario, $tipo);
+
+    // Devolver el resultado en formato JSON
+    echo json_encode($resultado);
+}
 
 function login()
 {
@@ -42,7 +64,6 @@ function login()
     if ($respuesta == null) {
         echo json_encode($respuesta);
     } else {
-
         session_start();
         $_SESSION['sesion'] = [
             "user" => $usario,
