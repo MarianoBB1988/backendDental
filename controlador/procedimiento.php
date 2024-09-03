@@ -25,7 +25,9 @@ $funcion = $_GET['funcion'];
     case "obtener":
       obtener();
       break;
-
+      case "obtenerRX":
+        obtenerRX();
+        break;
     case "obtenerOrdenados":
       obtenerOrdenados();
       break;
@@ -45,6 +47,13 @@ function obtener()
 {
   $ci = $_GET['ci'];
   $resultado = (new procedimiento())->obtenerProcedimientoDAO($ci);
+  echo json_encode($resultado);
+}
+
+function obtenerRX()
+{
+  $ci = $_GET['ci'];
+  $resultado = (new procedimiento())->obtenerRX();
   echo json_encode($resultado);
 }
 

@@ -30,6 +30,25 @@ class procedimiento
         return  $procedimientos;
     }
 
+    function obtenerRX()
+    {
+        $connection = connection();
+        $sql = "SELECT paciente.nombre as nomPaciente, procedimiento.adjunto as extension, paciente.id as idPaciente, paciente.fecha as fechaNacimiento, paciente.apellido as apellido, paciente.ci as ci, procedimiento.id, procedimiento.pieza, procedimiento.sector, procedimiento.nombre, procedimiento.fecha, procedimiento.descripcion, procedimiento.patologia, procedimiento.medicacion, procedimiento.estado, cuenta.estado as estadoCuenta, cuenta.costo, cuenta.unidad, cuenta.id as idCuenta FROM procedimiento RIGHT JOIN paciente on procedimiento.id_paciente = paciente.id INNER JOIN cuenta on cuenta.id_procedimiento= procedimiento.id WHERE procedimiento.adjunto='dcm' ORDER BY procedimiento.fecha ASC";
+        $respuesta = $connection->query($sql);
+        $procedimientos = $respuesta->fetch_all(MYSQLI_ASSOC);
+
+        foreach ($procedimientos as &$fila) {
+            foreach ($fila as $clave => &$valor) {
+                if ($valor === null) {
+                    $valor = ""; // Suplanta null por una cadena vacía
+                }
+            }
+        }
+
+
+        return  $procedimientos;
+    }
+
 
 
     public function obtenerProcedimientosOrdenados($columna, $orden, $idPaciente)

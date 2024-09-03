@@ -45,12 +45,13 @@ function agregar()
     // Obtener datos del formulario
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
+    $contraseña=$_POST['contraseña'];
     $nombre_usuario = $_POST['nombre_usuario'];
     $tipo = $_POST['tipo'];
 
     // Crear una instancia de la clase Usuario y llamar al método agregarUsuario
     $usuario = new Usuario();
-    $resultado = $usuario->agregarUsuario($nombre, $apellido, $nombre_usuario, $tipo);
+    $resultado = $usuario->agregarUsuario($nombre, $apellido, $nombre_usuario, $tipo, $contraseña);
 
     // Devolver el resultado en formato JSON
     echo json_encode($resultado);

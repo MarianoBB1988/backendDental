@@ -50,3 +50,70 @@
 [08-Jul-2024 22:18:46 Europe/Berlin] PHP Warning:  Undefined array key "adjunto" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 63
 [08-Jul-2024 22:18:46 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 59
 [08-Jul-2024 22:18:46 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 65
+[13-Aug-2024 14:34:42 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'contraseña' in 'field list' in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php:30
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php(30): mysqli->query('INSERT INTO usu...')
+#1 C:\xampp\htdocs\backendDental\controlador\usuario.php(54): usuario->agregarUsuario('Jimena', 'Pereira', 'jpereira', 'recepcionista', 'asd')
+#2 C:\xampp\htdocs\backendDental\controlador\usuario.php(17): agregar()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php on line 30
+[13-Aug-2024 14:35:02 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'contraseña' in 'field list' in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php:30
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php(30): mysqli->query('INSERT INTO usu...')
+#1 C:\xampp\htdocs\backendDental\controlador\usuario.php(54): usuario->agregarUsuario('Jimena', 'Pereira', 'jpereira', 'recepcionista', 'asd')
+#2 C:\xampp\htdocs\backendDental\controlador\usuario.php(17): agregar()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php on line 30
+[13-Aug-2024 20:51:44 Europe/Berlin] PHP Warning:  Undefined array key "tipo" in C:\xampp\htdocs\backendDental\controlador\agenda.php on line 49
+[14-Aug-2024 14:12:14 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: MySQL server has gone away in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php:30
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php(30): mysqli->query('INSERT INTO usu...')
+#1 C:\xampp\htdocs\backendDental\controlador\usuario.php(54): usuario->agregarUsuario('Adri\xC3\xA1n', 'Gomez', 'agomez', 'odont\xC3\xB3logo', 'asd')
+#2 C:\xampp\htdocs\backendDental\controlador\usuario.php(17): agregar()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php on line 30
+[14-Aug-2024 14:12:30 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php:22
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\controlador\usuario.php(39): usuario->obtenerUsuarios()
+#1 C:\xampp\htdocs\backendDental\controlador\usuario.php(26): obtener()
+#2 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php on line 22
+[14-Aug-2024 14:12:34 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php:22
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\controlador\usuario.php(39): usuario->obtenerUsuarios()
+#1 C:\xampp\htdocs\backendDental\controlador\usuario.php(26): obtener()
+#2 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php on line 22
+[14-Aug-2024 14:12:43 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php:30
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\controlador\usuario.php(54): usuario->agregarUsuario('Adrian', 'Gomez', 'agomez', 'odont\xC3\xB3logo', 'asd')
+#1 C:\xampp\htdocs\backendDental\controlador\usuario.php(17): agregar()
+#2 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php on line 30
+[14-Aug-2024 14:12:55 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php:22
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\controlador\usuario.php(39): usuario->obtenerUsuarios()
+#1 C:\xampp\htdocs\backendDental\controlador\usuario.php(26): obtener()
+#2 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\usuarioDAO.php on line 22
+[21-Aug-2024 19:44:36 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'undefined' in 'where clause' in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php:18
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php(18): mysqli->query('SELECT paciente...')
+#1 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(47): procedimiento->obtenerProcedimientoDAO('undefined')
+#2 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(26): obtener()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 18
+[21-Aug-2024 19:53:44 Europe/Berlin] PHP Warning:  Undefined array key "ci" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 46
+[21-Aug-2024 19:53:44 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY procedimiento.fecha ASC' at line 1 in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php:18
+Stack trace:
+#0 C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php(18): mysqli->query('SELECT paciente...')
+#1 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(47): procedimiento->obtenerProcedimientoDAO(NULL)
+#2 C:\xampp\htdocs\backendDental\controlador\procedimiento.php(26): obtener()
+#3 {main}
+  thrown in C:\xampp\htdocs\backendDental\modelo\procedimientoDAO.php on line 18
+[22-Aug-2024 00:33:54 Europe/Berlin] PHP Warning:  Undefined array key "ci" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 55
+[22-Aug-2024 00:34:11 Europe/Berlin] PHP Warning:  Undefined array key "ci" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 55
+[22-Aug-2024 00:34:14 Europe/Berlin] PHP Warning:  Undefined array key "ci" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 55
+[22-Aug-2024 00:34:14 Europe/Berlin] PHP Warning:  Undefined array key "ci" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 55
+[22-Aug-2024 00:40:31 Europe/Berlin] PHP Warning:  Undefined array key "ci" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 55
+[22-Aug-2024 00:41:03 Europe/Berlin] PHP Warning:  Undefined array key "ci" in C:\xampp\htdocs\backendDental\controlador\procedimiento.php on line 55

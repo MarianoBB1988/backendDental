@@ -23,9 +23,9 @@ class usuario
         $resultado = $respuesta->fetch_all(MYSQLI_ASSOC);
         return $resultado;
     }
-    public function agregarUsuario($nombre, $apellido, $nombre_usuario, $tipo)
+    public function agregarUsuario($nombre, $apellido, $nombre_usuario, $tipo, $contraseña)
     {
-        $sql = "INSERT INTO usuario (nombre, apellido, nombre_usuario, tipo) VALUES ('$nombre', '$apellido', '$nombre_usuario', '$tipo')";
+        $sql = "INSERT INTO usuario (nombre, apellido, nombre_usuario, tipo, password) VALUES ('$nombre', '$apellido', '$nombre_usuario', '$tipo', '$contraseña')";
         $connection = connection();
         $respuesta = $connection->query($sql);
 

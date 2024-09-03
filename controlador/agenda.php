@@ -45,7 +45,14 @@ switch ($funcion) {
 function obtener()
 {
     $fecha = $_GET['fecha'];
-    $resultado = (new agenda())->obtenerAgenda($fecha);
+    $usuario=$_GET['usuario'];
+    $tipo=$_GET['tipo'];
+    if ($tipo=='odontólogo'){
+        $resultado = (new agenda())->obtenerAgendaPorUsuario($fecha,$usuario);
+    }else{
+        $resultado = (new agenda())->obtenerAgenda($fecha,$usuario, $tipo);
+    }
+   
     echo json_encode($resultado);
 }
 
