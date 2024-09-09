@@ -5,81 +5,103 @@ require_once  'Respuesta/respuesta.php';
 class agenda
 {
 
-    function obtenerAgenda($fecha)
-    {
-        $connection = connection();
-        $sql = "SELECT agenda.*, usuario.nombre as nombreUsuario, usuario.apellido as apellidoUsuario, paciente.nombre, paciente.apellido, paciente.ci, paciente.telefono FROM agenda INNER JOIN paciente on paciente.id=agenda.id_paciente RIGHT JOIN usuario on usuario.nombre_usuario=agenda.usuario WHERE agenda.fecha='$fecha' ORDER BY hora ASC";
-        $respuesta = $connection->query($sql);
-        $resultado = $respuesta->fetch_all(MYSQLI_ASSOC);
-        return $resultado;
-    }
 
     
-    function obtenerAgendaPorUsuario($fecha, $usuario)
-    {
+    function obtenerAgendaPorUsuario($fecha, $usuario) {
         $connection = connection();
-        $sql = "SELECT agenda.*,  usuario.nombre as nombreUsuario, usuario.apellido as apellidoUsuario, paciente.nombre, paciente.apellido, paciente.ci, paciente.telefono FROM agenda INNER JOIN paciente on paciente.id=agenda.id_paciente RIGHT JOIN usuario on usuario.nombre_usuario=agenda.usuario WHERE agenda.fecha='$fecha' and agenda.usuario='$usuario' ORDER BY hora ASC";
-        $respuesta = $connection->query($sql);
-        $resultado = $respuesta->fetch_all(MYSQLI_ASSOC);
+        $sql = "SELECT agenda.*, usuario.nombre as nombreUsuario, usuario.apellido as apellidoUsuario, 
+                paciente.nombre, paciente.apellido, paciente.ci, paciente.telefono 
+                FROM agenda 
+                INNER JOIN paciente ON paciente.id = agenda.id_paciente 
+                RIGHT JOIN usuario ON usuario.nombre_usuario = agenda.usuario 
+                WHERE agenda.fecha = ? AND agenda.usuario = ? 
+                ORDER BY hora ASC";
+        
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('ss', $fecha, $usuario);
+        $stmt->execute();
+        $resultado = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $resultado;
+    }
+    
+
+  
+    public function obtenerAgenda($fecha) {
+        $connection = connection();
+        $sql = "SELECT agenda.*, usuario.nombre as nombreUsuario, usuario.apellido as apellidoUsuario, 
+                paciente.nombre, paciente.apellido, paciente.ci, paciente.telefono 
+                FROM agenda 
+                INNER JOIN paciente on paciente.id=agenda.id_paciente 
+                RIGHT JOIN usuario on usuario.nombre_usuario=agenda.usuario 
+                WHERE agenda.fecha = ? 
+                ORDER BY hora ASC";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('s', $fecha);
+        $stmt->execute();
+        $resultado = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $resultado;
     }
 
-    public function agendarDAO($idPaciente, $hora, $fecha, $motivo){
-        $sql = "INSERT INTO agenda(id, fecha, hora, motivo, id_paciente, estado) VALUES (0, '$fecha', '$hora', '$motivo', '$idPaciente', 0)";
+    public function agendarDAO($idPaciente, $hora, $fecha, $motivo) {
         $connection = connection();
-        $respuesta = $connection->query($sql);
-        if ($respuesta){
-            return new Respuesta(true, "Paciente agendado", $respuesta);
-        }else{
-            return new Respuesta(false, "Error al agendar al paciente", $respuesta);
-        }
+        $sql = "INSERT INTO agenda (fecha, hora, motivo, id_paciente, estado) 
+                VALUES (?, ?, ?, ?, 0)";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('sssi', $fecha, $hora, $motivo, $idPaciente);
         
+        if ($stmt->execute()) {
+            return new Respuesta(true, "Paciente agendado", $stmt->insert_id);
+        } else {
+            return new Respuesta(false, "Error al agendar al paciente: " . $stmt->error, null);
+        }
     }
 
-    public function eliminarAgendaDAO($id){
-        $sql = "DELETE FROM agenda WHERE id = '$id'";
+    public function eliminarAgendaDAO($idAgenda) {
         $connection = connection();
-        $respuesta = $connection->query($sql);
-        if ($respuesta){
-            return new Respuesta(true, "Agenda eliminado", $respuesta);
-        }else{
-            return new Respuesta(false, "Error al eliminar la agenda", $respuesta);
+        $sql = "DELETE FROM agenda WHERE id = ?";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('i', $idAgenda);
+        
+        if ($stmt->execute()) {
+            return new Respuesta(true, "Agenda eliminada", 'true');
+        } else {
+            return new Respuesta(false, "Error al eliminar la agenda: ", $stmt->error);
         }
     }
 
-    function modificarDAO($id,$idPaciente, $hora, $fecha, $motivo)
-    {
-        try{
+    function modificarDAO($id, $idPaciente, $hora, $fecha, $motivo) {
+        try {
             $connection = connection();
-            $sql = "UPDATE agenda SET id_paciente=$idPaciente, hora= '$hora', fecha='$fecha', motivo='$motivo' WHERE id=$id";
-            $respuesta = $connection->query($sql);
-
-            if ($respuesta){
-                return new Respuesta(true, "agenda modificada", $respuesta);
-            }else{
-                return new Respuesta(false, "Error al modificar agenda", $respuesta);
+            $sql = "UPDATE agenda SET id_paciente = ?, hora = ?, fecha = ?, motivo = ? WHERE id = ?";
+            $stmt = $connection->prepare($sql);
+            $stmt->bind_param('isssi', $idPaciente, $hora, $fecha, $motivo, $id);
+            
+            if ($stmt->execute()) {
+                return new Respuesta(true, "Agenda modificada", $stmt->affected_rows);
+            } else {
+                return new Respuesta(false, "Error al modificar agenda", $stmt->error);
             }
-        }catch(Exception $e){   
+        } catch (Exception $e) {   
             return $e->getMessage();
         }
-       
     }
+    
 
-    function cambiarEstado($id,$estado)
-    {
-        try{
+    function cambiarEstado($id, $estado) {
+        try {
             $connection = connection();
-            $sql = "UPDATE agenda SET estado=$estado WHERE id=$id";
-            $respuesta = $connection->query($sql);
-           // $resultado = $respuesta->fetch_all(MYSQLI_ASSOC);
-            if ($respuesta){
-                return new Respuesta(true, "estado modificado", $respuesta);
-            }else{
-                return new Respuesta(false, "Error al cambiar el estado", $respuesta);
+            $sql = "UPDATE agenda SET estado = ? WHERE id = ?";
+            $stmt = $connection->prepare($sql);
+            $stmt->bind_param('ii', $estado, $id);
+            
+            if ($stmt->execute()) {
+                return new Respuesta(true, "Estado modificado", $stmt->affected_rows);
+            } else {
+                return new Respuesta(false, "Error al cambiar el estado", $stmt->error);
             }
-        }catch(Exception $e){   
+        } catch (Exception $e) {   
             return $e->getMessage();
         }
-       
     }
+    
 }
