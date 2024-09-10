@@ -1,0 +1,49 @@
+
+<?php
+// Permitir solicitudes solo desde el origen específico
+header("Access-Control-Allow-Origin: http://localhost:5173");
+// Permitir el envío de cookies desde un origen diferente
+header("Access-Control-Allow-Credentials: true");
+// Permitir los métodos HTTP especificados (GET, POST, etc.)
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+// Permitir los encabezados HTTP especificados
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+require_once '../modelo/loginDAO.php';
+
+$funcion = $_GET['funcion'];
+
+switch ($funcion) {
+   
+    case "login":
+        login();
+        break;
+    case "logout":
+        logout();
+        break;
+}
+
+
+function login()
+{
+    $usario = $_POST['usuario'];
+    $password = $_POST['password'];
+    $respuesta = (new login())->login($usario, $password);
+    if ($respuesta == null) {
+        echo json_encode($respuesta);
+    } else {
+        session_start();
+        $_SESSION['sesion'] = [
+            "user" => $usario,
+            "tipo" => $respuesta['tipo'],
+            "name" => $respuesta['nombre']
+        ];
+        echo json_encode($respuesta);
+    }
+}
+
+function logout()
+{
+    session_start();
+    session_destroy();
+}

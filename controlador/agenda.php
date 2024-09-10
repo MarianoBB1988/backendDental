@@ -79,8 +79,9 @@ function agregar()
     $hora = $_POST['hora'];
     $fecha = $_POST['fecha'];
     $motivo = $_POST['motivo'];
+    $usuario=$_POST['usuario'];
    
-    $resultado = (new agenda())->agendarDAO($idPaciente, $hora, $fecha, $motivo);
+    $resultado = (new agenda())->agendarDAO($idPaciente, $hora, $fecha, $motivo,$usuario);
     echo json_encode($resultado);
 }
 

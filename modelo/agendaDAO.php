@@ -42,19 +42,22 @@ class agenda
         return $resultado;
     }
 
-    public function agendarDAO($idPaciente, $hora, $fecha, $motivo) {
-        $connection = connection();
-        $sql = "INSERT INTO agenda (fecha, hora, motivo, id_paciente, estado) 
-                VALUES (?, ?, ?, ?, 0)";
-        $stmt = $connection->prepare($sql);
-        $stmt->bind_param('sssi', $fecha, $hora, $motivo, $idPaciente);
+    public function agendarDAO($idPaciente, $hora, $fecha, $motivo, $usuario) {
+        $connection = connection(); // Asegúrate de que la función connection() regresa una conexión válida
+        $sql = "INSERT INTO agenda (fecha, hora, motivo, id_paciente, estado, usuario) 
+                VALUES (?, ?, ?, ?, 0, ?)";
         
+        $stmt = $connection->prepare($sql);
+        
+        $stmt->bind_param('sssis', $fecha, $hora, $motivo, $idPaciente, $usuario);
+    
         if ($stmt->execute()) {
             return new Respuesta(true, "Paciente agendado", $stmt->insert_id);
         } else {
             return new Respuesta(false, "Error al agendar al paciente: " . $stmt->error, null);
         }
     }
+    
 
     public function eliminarAgendaDAO($idAgenda) {
         $connection = connection();

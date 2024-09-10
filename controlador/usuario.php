@@ -25,12 +25,10 @@ switch ($funcion) {
     case "obtener":
         obtener();
         break;
-    case "login":
-        login();
+    case "obtenerOdontologos":
+        obtenerOdontologos();
         break;
-    case "logout":
-        logout();
-        break;
+
 }
 
 function obtener()
@@ -40,12 +38,19 @@ function obtener()
     echo json_encode($resultado);
 }
 
+function obtenerOdontologos()
+{
+
+    $resultado = (new usuario())->obtenerOdontologos();
+    echo json_encode($resultado);
+}
+
 function agregar()
 {
     // Obtener datos del formulario
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
-    $contraseña=$_POST['contraseña'];
+    $contraseña = $_POST['contraseña'];
     $nombre_usuario = $_POST['nombre_usuario'];
     $tipo = $_POST['tipo'];
 
@@ -57,27 +62,4 @@ function agregar()
     echo json_encode($resultado);
 }
 
-function login()
-{
-    $usario = $_POST['usuario'];
-    $password = $_POST['password'];
-    $respuesta = (new usuario())->login($usario, $password);
-    if ($respuesta == null) {
-        echo json_encode($respuesta);
-    } else {
-        session_start();
-        $_SESSION['sesion'] = [
-            "user" => $usario,
-            "tipo" => $respuesta['tipo'],
-            "name" => $respuesta['nombre']
-        ];
-        echo json_encode($respuesta);
-    }
-}
 
-function logout()
-{
-    session_start();
-    session_destroy();
-   
-}
