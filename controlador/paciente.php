@@ -1,6 +1,7 @@
 <?php
 // Permitir solicitudes solo desde el origen específico
 header("Access-Control-Allow-Origin: http://localhost:5173");
+
 // Permitir el envío de cookies desde un origen diferente
 header("Access-Control-Allow-Credentials: true");
 // Permitir los métodos HTTP especificados (GET, POST, etc.)
@@ -12,37 +13,44 @@ require_once '../modelo/pacienteDAO.php';
 session_start();
 
 if (isset($_SESSION['sesion'])) {
-    $funcion = $_GET['funcion'];
-    switch ($funcion) {
-        case "agregar":
-            agregar();
-            break;
-        case "modificar":
-            modificar();
-            break;
-        case "eliminar":
-            eliminar();
-            break;
-        case "obtener":
-            obtener();
-            break;
-        case "obtenerTodos":
-            obtenerTodos();
-            break;
-        case "obtenerOrdenados":
-            obtenerOrdenados();
-            break;
-        case "obtenerId":
-            obtenerId();
-            break;
-        case "subirImagen":
-            subir_imagen();
-            break;
-    }
+$funcion = $_GET['funcion'];
+switch ($funcion) {
+    case "agregar":
+        agregar();
+        break;
+    case "modificar":
+        modificar();
+        break;
+    case "eliminar":
+        eliminar();
+        break;
+    case "obtener":
+        obtener();
+        break;
+    case "obtenerTodos":
+        obtenerTodos();
+        break;
+    case "obtenerOrdenados":
+        obtenerOrdenados();
+        break;
+    case "obtenerId":
+        obtenerId();
+        break;
+    case "subirImagen":
+        subir_imagen();
+        break;
+    case "mayorAtencion":
+        mayorAtencion();
+        break;
+}
 }
 
 
-
+function mayorAtencion()
+{
+    $resultado = (new paciente())->mayorAtencion();
+    echo json_encode($resultado);
+}
 
 function obtener()
 {

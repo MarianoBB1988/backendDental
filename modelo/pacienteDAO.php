@@ -1,6 +1,6 @@
 <?php
 
-require_once  '../conexion/conexion.php';
+require_once  '../conexion/con_clientes.php';
 require_once  'Respuesta/respuesta.php';
 
 class paciente
@@ -11,12 +11,26 @@ class paciente
         $connection = connection();
         $sql = "SELECT * FROM paciente WHERE ci = ?";
         $stmt = $connection->prepare($sql);
-        $stmt->bind_param('s', $ci); // 's' significa que $ci es un string
+        $stmt->bind_param('i', $ci); // 's' significa que $ci es un string
         $stmt->execute();
         $respuesta = $stmt->get_result();
         $resultado = $respuesta->fetch_all(MYSQLI_ASSOC);
         return $resultado;
     }
+
+    
+    public function mayorAtencion()
+    {
+        $connection = connection();
+        $sql = "SELECT * FROM vistapacientesmayoratencion";
+        $stmt = $connection->prepare($sql);
+       
+        $stmt->execute();
+        $respuesta = $stmt->get_result();
+        $resultado = $respuesta->fetch_all(MYSQLI_ASSOC);
+        return $resultado;
+    }
+
 
     public function obtenerPacientes()
     {

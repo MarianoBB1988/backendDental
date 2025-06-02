@@ -1,20 +1,19 @@
-
 <?php
-// Permitir solicitudes solo desde el origen específico
-header("Access-Control-Allow-Origin: http://localhost:5173");
-// Permitir el envío de cookies desde un origen diferente
+// Cabeceras de seguridad
+header("Access-Control-Allow-Origin: https://dentaldoc.proyectobinor.com/");
+
 header("Access-Control-Allow-Credentials: true");
-// Permitir los métodos HTTP especificados (GET, POST, etc.)
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-// Permitir los encabezados HTTP especificados
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; frame-ancestors 'none';");
+header("X-Frame-Options: DENY");
+header("X-Content-Type-Options: nosniff");
 
 require_once '../modelo/loginDAO.php';
 
 $funcion = $_GET['funcion'];
 
 switch ($funcion) {
-   
     case "login":
         login();
         break;
@@ -22,7 +21,6 @@ switch ($funcion) {
         logout();
         break;
 }
-
 
 function login()
 {
@@ -36,7 +34,8 @@ function login()
         $_SESSION['sesion'] = [
             "user" => $usario,
             "tipo" => $respuesta['tipo'],
-            "name" => $respuesta['nombre']
+            "name" => $respuesta['nombre'],
+            "bd" => $respuesta['cliente']
         ];
         echo json_encode($respuesta);
     }

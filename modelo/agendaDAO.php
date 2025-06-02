@@ -1,5 +1,5 @@
 <?php
-require_once  '../conexion/conexion.php';
+require_once  '../conexion/con_clientes.php';
 require_once  'Respuesta/respuesta.php';
 
 class agenda

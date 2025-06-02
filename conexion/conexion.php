@@ -6,13 +6,13 @@ ini_set('display_startup_errors', '0');
 // Habilitar el registro de errores
 ini_set('log_errors', '1');
 ini_set('error_log', '../log/php_errors.log');
-function connection()
+function connection_cli()
 {
     try {
         $host = "localhost";
         $usuario = "root";
         $password = "";
-        $bd = "dental";
+        $bd = "clientes";
         $puerto = 3306;
         $mysql = new mysqli($host, $usuario, $password, $bd, $puerto);
         return $mysql;

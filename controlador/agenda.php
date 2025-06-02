@@ -1,6 +1,7 @@
 <?php
 // Permitir solicitudes solo desde el origen específico
 header("Access-Control-Allow-Origin: http://localhost:5173");
+
 // Permitir el envío de cookies desde un origen diferente
 header("Access-Control-Allow-Credentials: true");
 // Permitir los métodos HTTP especificados (GET, POST, etc.)
@@ -11,7 +12,7 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 require_once '../modelo/agendaDAO.php';
 session_start();
 
-//if (isset($_SESSION['sesion'])) {
+if (isset($_SESSION['sesion'])) {
 $funcion = $_GET['funcion'];
 switch ($funcion) {
     case "agregar":
@@ -37,7 +38,7 @@ switch ($funcion) {
         cambiarEstado();
         break;
 }
-//}
+}
 
 
 

@@ -1,0 +1,42 @@
+<?php
+//Deshabilitar la visualización de errores
+ini_set('display_errors', '0');
+ini_set('display_startup_errors', '0');
+
+// Habilitar el registro de errores
+ini_set('log_errors', '1');
+ini_set('error_log', '../log/php_errors.log');
+function connection()
+{
+    try {
+        session_start();
+        $host = "localhost";
+        $usuario = "root";
+        $password = "";
+        $bd =  $_SESSION['sesion']['bd']."_"."dental";
+        $puerto = 3306;
+        $mysql = new mysqli($host, $usuario, $password, $bd, $puerto);
+        return $mysql;
+    } catch (Exception $e) {
+        $error = $e->getMessage();
+        echo $error; //return
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
