@@ -38,5 +38,6 @@ Este proyecto es el backend de un sistema de gestión dental. Está desarrollado
 - Mantener la estructura de carpetas y buenas prácticas establecidas.
 - Documentar cualquier cambio importante en este archivo.
 
+
 ---
 
