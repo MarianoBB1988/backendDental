@@ -15,7 +15,7 @@ class procedimiento
                 RIGHT JOIN paciente ON procedimiento.id_paciente = paciente.id 
                 INNER JOIN cuenta ON cuenta.id_procedimiento = procedimiento.id 
                 WHERE paciente.ci = ? 
-                ORDER BY cuenta.estado ASC";
+                ORDER BY procedimiento.fecha ASC";
 
         $stmt = $connection->prepare($sql);
         $stmt->bind_param('s', $ci);

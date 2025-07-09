@@ -50,11 +50,29 @@ class usuario
         $stmt->bind_param('ssssss', $nombre, $apellido, $nombre_usuario, $tipo, $hash, $cliente);
         
         if ($stmt->execute()) {
+           // return new Respuesta(true, "Usuario agregado", $stmt->insert_id);
+           $this->agregarUsuarioLocal($nombre, $apellido, $nombre_usuario, $tipo, $contraseña);
+        } else {
+            return new Respuesta(false, "Error al agregar el usuario", $stmt->error);
+        }
+    }
+
+     public function agregarUsuarioLocal($nombre, $apellido, $nombre_usuario, $tipo, $contraseña)
+    {
+        $connection = connection();
+       // $cliente= $_SESSION['sesion']['bd'];
+        $hash = password_hash($contraseña, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO usuario (nombre, apellido, nombre_usuario, tipo, password, cliente) VALUES (?, ?, ?, ?, ?,?)";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('ssssss', $nombre, $apellido, $nombre_usuario, $tipo, $hash, $cliente);
+        
+        if ($stmt->execute()) {
             return new Respuesta(true, "Usuario agregado", $stmt->insert_id);
         } else {
             return new Respuesta(false, "Error al agregar el usuario", $stmt->error);
         }
     }
+
 
      public function agregarUsuarioScript($nombre, $apellido, $nombre_usuario, $tipo, $contraseña,$cliente)
     {
