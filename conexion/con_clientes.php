@@ -8,12 +8,26 @@ ini_set('log_errors', '1');
 ini_set('error_log', '../log/php_errors.log');
 function connection()
 {
-    try {
-        session_start();
+           session_start();
+
+// 2. Verificar si la sesión existe y tiene los datos
+if (isset($_SESSION['sesion'])) {
+    // 3. Acceder a los datos
+
+    $cliente = $_SESSION['sesion']['bd'];
+    
+  
+} else {
+    // La sesión no existe, redirigir al login
+    header("Location: login.php");
+    exit();
+}
+
+try{
         $host = "localhost";
         $usuario = "root";
         $password = "";
-        $bd =  $_SESSION['sesion']['bd']."_"."dental";
+        $bd = $cliente.'_dental';
         $puerto = 3306;
         $mysql = new mysqli($host, $usuario, $password, $bd, $puerto);
         return $mysql;

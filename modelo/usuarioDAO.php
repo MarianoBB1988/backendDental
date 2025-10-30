@@ -11,9 +11,10 @@ class usuario
 
     public function obtenerUsuarios()
     {
+        session_start();
         $connection = connection_cli();
         $cliente= $_SESSION['sesion']['bd'];
-        $sql = "SELECT * FROM usuario where tipo != 'admin' and cliente='$cliente' ORDER BY id DESC";
+          $sql = "SELECT * FROM usuario WHERE cliente='$cliente' ORDER BY id DESC";
         $respuesta = $connection->query($sql);
         $resultado = $respuesta->fetch_all(MYSQLI_ASSOC);
         return $resultado;
@@ -21,9 +22,11 @@ class usuario
 
     public function obtenerOdontologos()
     {
+         session_start();
         $connection = connection_cli();
         $cliente= $_SESSION['sesion']['bd'];
-        $sql = "SELECT * FROM usuario WHERE tipo = 'odontólogo' or tipo='admin' and cliente='$cliente' ORDER BY id DESC";
+         $sql = "SELECT * FROM usuario where tipo = 'odontólogo' or tipo='admin' and cliente='$cliente' ORDER BY id DESC";
+     
         $respuesta = $connection->query($sql);
         $resultado = $respuesta->fetch_all(MYSQLI_ASSOC);
         return $resultado;
@@ -42,6 +45,7 @@ class usuario
 
     public function agregarUsuario($nombre, $apellido, $nombre_usuario, $tipo, $contraseña)
     {
+        session_start();
         $connection = connection_cli();
         $cliente= $_SESSION['sesion']['bd'];
         $hash = password_hash($contraseña, PASSWORD_DEFAULT);
@@ -49,13 +53,47 @@ class usuario
         $stmt = $connection->prepare($sql);
         $stmt->bind_param('ssssss', $nombre, $apellido, $nombre_usuario, $tipo, $hash, $cliente);
         
-        if ($stmt->execute()) {
-           // return new Respuesta(true, "Usuario agregado", $stmt->insert_id);
-           $this->agregarUsuarioLocal($nombre, $apellido, $nombre_usuario, $tipo, $contraseña);
-        } else {
-            return new Respuesta(false, "Error al agregar el usuario", $stmt->error);
-        }
+     if ($stmt->execute()) {
+  //  $this->agregarUsuarioLocal($nombre, $apellido, $nombre_usuario, $tipo, $contraseña);
+    return new Respuesta(true, "Usuario agregado", $stmt->insert_id);
+} else {
+    return new Respuesta(false, "Error al agregar el usuario", $stmt->error);
+}
     }
+    
+    
+        public function agregarUsuarioInicial($nombre, $apellido, $nombre_usuario, $tipo, $contraseña, $estado, $cliente)
+    {
+        session_start();
+        $connection = connection_cli();
+       
+        $hash = password_hash($contraseña, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO usuario (nombre, apellido, nombre_usuario, tipo, password, inactivo, cliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('sssssii', $nombre, $apellido, $nombre_usuario, $tipo, $hash,$estado, $cliente);
+        
+     if ($stmt->execute()) {
+  //  $this->agregarUsuarioLocal($nombre, $apellido, $nombre_usuario, $tipo, $contraseña);
+    return new Respuesta(true, "Usuario agregado", $stmt->insert_id);
+} else {
+    return new Respuesta(false, "Error al agregar el usuario", $stmt->error);
+}
+    }
+    
+    public function modificarUsuarioInicial($id, $nombre, $apellido, $nombre_usuario, $tipo, $contraseña, $estado, $cliente){
+         session_start();
+         $connection = connection_cli();
+          $hash = password_hash($contraseña, PASSWORD_DEFAULT);
+        $sql = "UPDATE usuario SET nombre = ?, apellido = ?, nombre_usuario = ?, tipo = ?, password=?, cliente=?, inactivo=? WHERE id = ?";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param('sssssiii', $nombre, $apellido, $nombre_usuario, $tipo, $hash, $cliente, $estado, $id);
+
+        $respuesta = $stmt->execute();
+        return $respuesta;
+        
+    }
+    
+    
 
      public function agregarUsuarioLocal($nombre, $apellido, $nombre_usuario, $tipo, $contraseña)
     {
@@ -78,7 +116,7 @@ class usuario
     {
         $connection = connection_cli();
       
-        $hash = password_hash($contraseña, PASSWORD_DEFAULT);
+        $hash = password_hash($contraseña, PASSWORD_DEFAULT);//Encriptamos la contraseña
         $sql = "INSERT INTO usuario (nombre, apellido, nombre_usuario, tipo, password, cliente) VALUES (?, ?, ?, ?, ?,?)";
         $stmt = $connection->prepare($sql);
         $stmt->bind_param('ssssss', $nombre, $apellido, $nombre_usuario, $tipo, $hash, $cliente);

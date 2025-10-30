@@ -34,6 +34,10 @@ switch ($funcion) {
         obtenerOrdenados();
         break;
 
+     case "obtenerAgenda":
+        obtenerAgenda();
+        break;
+
     case "cambiarEstado":
         cambiarEstado();
         break;
@@ -46,15 +50,12 @@ switch ($funcion) {
 function obtener()
 {
     $fecha = $_GET['fecha'];
-    $usuario=$_GET['usuario'];
-    $tipo=$_GET['tipo'];
-    if ($tipo=='odontólogo'){
-        $resultado = (new agenda())->obtenerAgendaPorUsuario($fecha,$usuario);
-    }else{
-        $resultado = (new agenda())->obtenerAgenda($fecha,$usuario, $tipo);
-    }
+    $id_odontologo=$_GET['id_odontologo'];
+  //  $tipo=$_GET['tipo'];
+    $resultado = (new agenda())->obtenerAgendaPorUsuario($fecha, $id_odontologo);
    
-    echo json_encode($resultado);
+echo json_encode($resultado);
+ 
 }
 
 function obtenerTodos()
@@ -72,6 +73,11 @@ function obtenerOrdenados()
     echo json_encode($resultado);
 }
 
+function obtenerAgenda(){
+     $fecha = $_GET['fecha'];
+      $resultado = (new agenda())->obtenerAgendas($fecha);
+    echo json_encode($resultado);
+}
 
 
 function agregar()
@@ -79,10 +85,11 @@ function agregar()
     $idPaciente = $_POST['idPaciente'];
     $hora = $_POST['hora'];
     $fecha = $_POST['fecha'];
+    $duracion = $_POST['duracion'];
     $motivo = $_POST['motivo'];
     $usuario=$_POST['usuario'];
-   
-    $resultado = (new agenda())->agendarDAO($idPaciente, $hora, $fecha, $motivo,$usuario);
+
+    $resultado = (new agenda())->agendarDAO($idPaciente, $hora, $fecha, $duracion, $motivo, $usuario);
     echo json_encode($resultado);
 }
 
@@ -91,9 +98,10 @@ function modificar()
     $id = $_GET['id'];
     $idPaciente = $_POST['idPaciente'];
     $hora = $_POST['hora'];
+      $duracion = $_POST['duracion'];
     $fecha = $_POST['fecha'];
     $motivo = $_POST['motivo'];
-    $resultado = (new agenda())->modificarDAO($id,$idPaciente, $hora, $fecha, $motivo);
+    $resultado = (new agenda())->modificarDAO($id,$idPaciente, $hora, $fecha, $duracion, $motivo);
     echo json_encode($resultado);
 }
 

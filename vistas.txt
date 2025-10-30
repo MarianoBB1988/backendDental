@@ -1,0 +1,24 @@
+CREATE ALGORITHM=UNDEFINED 
+VIEW `vistapacientesmayoratencion` AS 
+SELECT 
+    p.id AS id,
+    p.nombre AS nombre,
+    p.apellido AS apellido,
+    p.ci AS ci,
+    p.telefono AS telefono,
+    p.email AS email,
+    COUNT(pr.id) AS cantidad_atencion
+FROM paciente p
+JOIN procedimiento pr ON p.id = pr.id_paciente
+GROUP BY p.id, p.nombre, p.apellido, p.ci, p.telefono, p.email
+ORDER BY COUNT(pr.id) DESC;
+
+
+CREATE ALGORITHM=UNDEFINED 
+VIEW `vistaprocedimientosmasimplementados` AS 
+SELECT 
+    procedimiento.nombre AS nombre, 
+    COUNT(0) AS cantidad 
+FROM procedimiento 
+GROUP BY procedimiento.nombre 
+ORDER BY COUNT(0) DESC;

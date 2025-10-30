@@ -27,6 +27,17 @@ class login {
         }
         return null;
     }
+    
 
+public function allUsers(){
+       $connection = connection_cli();
+        $sql = "SELECT * FROM usuario";
+        $stmt = $connection->prepare($sql);
+       
+        $stmt->execute();
+        $respuesta = $stmt->get_result();
+        $resultado = $respuesta->fetch_all(MYSQLI_ASSOC);
+        return $resultado;
+}
 
 }

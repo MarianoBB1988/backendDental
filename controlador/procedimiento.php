@@ -47,8 +47,21 @@ switch ($funcion) {
   case "mayorImplementacion":
     mayorImplementacion();
     break;
+  case "listar_precios":
+      listar_precios();
+  
+      
 }
+
+
 }
+
+function listar_precios(){
+     $resultado = (new procedimiento())->listar_precios();
+     echo json_encode($resultado);
+}
+
+
 
 function obtenerOrdenados()
 {

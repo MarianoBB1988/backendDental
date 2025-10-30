@@ -9,6 +9,10 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 // Permitir los encabezados HTTP especificados
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once '../modelo/usuarioDAO.php';
 
 $funcion = $_GET['funcion'];
@@ -37,9 +41,18 @@ switch ($funcion) {
     case "modificar_imagen_usuario":
         modificar_imagen_usuario();
         break;
+    case "me":
+        me();
+        break;
 
     case "resetear_contraseña":
         resetear_contraseña();
+        break;
+    case "agregarUsuarioInicial":
+        agregarUsuarioInicial();
+        break;
+    case "modificarUsuarioInicial":
+        modificarUsuarioInicial();
         break;
 }
 
@@ -50,6 +63,15 @@ function perfil()
     $usuario = $data['usuario'];
     $resultado = (new usuario())->perfil($usuario);
     echo json_encode($resultado);
+}
+
+function me(){
+    session_start();
+echo json_encode([
+    'id' => $_SESSION['sesion']['id'],
+    'usuario' => $_SESSION['sesion']['user'],
+    'tipo' => $_SESSION['sesion']['tipo']
+]);
 }
 
 function modificar()
@@ -110,6 +132,61 @@ function modificar_imagen_usuario()
             echo json_encode(['success' => false, 'error' => 'No se pudo guardar la imagen']);
         }
     }
+}
+
+
+function agregarUsuarioInicial()
+{
+    // Obtener datos del formulario
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $contraseña = $_POST['contraseña'];
+    $nombre_usuario = $_POST['nombre_usuario'];
+    $tipo = $_POST['tipo'];
+    $cliente = $_POST['cliente'];
+    $estado=$_POST['inactivo'];
+    // Crear una instancia de la clase Usuario y llamar al método agregarUsuario
+    $usuario = new Usuario();
+    $resultado = $usuario->agregarUsuarioInicial($nombre, $apellido, $nombre_usuario, $tipo, $contraseña, $estado, $cliente);
+
+    // Devolver el resultado en formato JSON
+    echo json_encode($resultado);
+}
+
+function modificarUsuarioInicial()
+{
+    // Obtener datos del formulario
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $contraseña = $_POST['contraseña'];
+    $nombre_usuario = $_POST['nombre_usuario'];
+    $tipo = $_POST['tipo'];
+    $cliente = $_POST['cliente'];
+    $estado=$_POST['inactivo'];
+    $id=$_POST['id'];
+    // Crear una instancia de la clase Usuario y llamar al método agregarUsuario
+    $usuario = new Usuario();
+    $resultado = $usuario->modificarUsuarioInicial($id,$nombre, $apellido, $nombre_usuario, $tipo, $contraseña, $estado, $cliente);
+
+    // Devolver el resultado en formato JSON
+    echo json_encode($resultado);
+}
+
+
+
+
+function eliminar()
+{
+    // Obtener datos del formulario
+    $id = $_POST['id'];
+  
+
+    // Crear una instancia de la clase Usuario y llamar al método agregarUsuario
+    $usuario = new Usuario();
+    $resultado = $usuario->eliminarUsuario($id);
+
+    // Devolver el resultado en formato JSON
+    echo json_encode($resultado);
 }
 function agregar()
 {

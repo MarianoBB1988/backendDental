@@ -1,7 +1,7 @@
 <?php
 // Cabeceras de seguridad
 header("Access-Control-Allow-Origin: https://dentaldoc.proyectobinor.com/");
-
+header("Access-Control-Allow-Origin: http://localhost:5173/");
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
@@ -20,6 +20,14 @@ switch ($funcion) {
     case "logout":
         logout();
         break;
+    case "allUsers":
+        allUsers();
+        break;
+}
+
+function allUsers(){
+    $respuesta = (new login())->allUsers();
+     echo json_encode($respuesta);
 }
 
 function login()
@@ -35,7 +43,8 @@ function login()
             "user" => $usario,
             "tipo" => $respuesta['tipo'],
             "name" => $respuesta['nombre'],
-            "bd" => $respuesta['cliente']
+            "bd" => $respuesta['cliente'],
+            "id"=> $respuesta['id']
         ];
         echo json_encode($respuesta);
     }
